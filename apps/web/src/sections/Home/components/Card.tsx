@@ -3,9 +3,9 @@ import ElectricIcon from '../../../icons/Electric';
 
 export const Card = () => {
     return (
-        <div className="flex justify-center items-center min-h-screen">
-            <div className="max-w-[720px] mx-auto">
-                <div className="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]">
+        <div className="flex justify-center items-center">
+            <div className="max-w-[720px]mx - auto">
+                < div className="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]" >
                     <a
                         target="_blank"
                         href="https://github.com/alejandroaguilardev/ree"
@@ -13,7 +13,7 @@ export const Card = () => {
                     >
                         visita el repositorio en <b>alejandroaguilardev</b>.
                     </a>
-                </div>
+                </div >
 
                 <div className="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
                     <div className="p-6">
@@ -40,7 +40,7 @@ export const Card = () => {
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }

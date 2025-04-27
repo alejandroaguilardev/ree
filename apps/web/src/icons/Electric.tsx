@@ -1,0 +1,7 @@
+const ElectricIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path fillRule="evenodd" d="M13 2L3 14h8v8l10-12h-8v-8z" clipRule="evenodd" />
+    </svg>
+);
+
+export default ElectricIcon;

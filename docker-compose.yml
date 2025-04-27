@@ -26,7 +26,7 @@ services:
     depends_on:
       - mongodb
     env_file:
-      - ./apps/server/.env
+      - ./apps/server/.env.prod
     networks:
       - ree-network
 

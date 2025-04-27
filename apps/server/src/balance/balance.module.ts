@@ -8,13 +8,30 @@ import { EnergyBalanceModel, EnergyBalanceSchema } from './infraestructura/schem
 import { HttpModule } from '@nestjs/axios';
 import { ScheduleModule } from '@nestjs/schedule';
 import { BalanceScheduleService } from './services/balance-schedule.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
   imports: [
     HttpModule,
     ScheduleModule.forRoot(),
     MongooseModule.forFeature([{ name: EnergyBalanceModel.name, schema: EnergyBalanceSchema }]),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+    }),
   ],
-  providers: [BalanceResolver, BalanceService, ExternalBalanceApi, MongoEnergyBalanceRepository, BalanceScheduleService],
+  providers: [
+    BalanceResolver,
+    BalanceService,
+    ExternalBalanceApi,
+    MongoEnergyBalanceRepository,
+    BalanceScheduleService,
+    {
+      provide: APP_PIPE,
+      useValue: [],
+    },
+  ],
 })
 export class BalanceModule { }

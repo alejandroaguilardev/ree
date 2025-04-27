@@ -1,10 +1,10 @@
-interface Value {
+export interface Value {
     value: number;
     percentage: number;
     datetime: string;
 }
 
-interface RenewableContent {
+export interface RenewableContent {
     type: string;
     id: string;
     groupId: string;
@@ -23,7 +23,7 @@ interface RenewableContent {
     };
 }
 
-interface NonRenewableContent {
+export interface NonRenewableContent {
     type: string;
     id: string;
     groupId: string;
@@ -42,7 +42,7 @@ interface NonRenewableContent {
     };
 }
 
-interface StorageContent {
+export interface StorageContent {
     type: string;
     id: string;
     groupId: string;
@@ -61,7 +61,7 @@ interface StorageContent {
     };
 }
 
-interface DemandContent {
+export interface DemandContent {
     type: string;
     id: string;
     groupId: string;
@@ -80,7 +80,7 @@ interface DemandContent {
     };
 }
 
-interface Included {
+export interface Included {
     type: 'Renovable' | 'No-Renovable' | 'Almacenamiento' | 'Demanda';
     id: string;
     attributes: {

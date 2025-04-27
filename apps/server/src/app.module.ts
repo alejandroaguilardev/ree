@@ -14,8 +14,7 @@ import { GlobalExceptionFilter } from './config/global-error';
       validate: validateEnv,
     }),
     MongooseModule.forRoot(process.env.DATABASE_MONGO_URL!),
-
-    BalanceModule
+    BalanceModule,
   ],
   controllers: [],
   providers: [

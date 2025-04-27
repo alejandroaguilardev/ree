@@ -1,11 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_BALANCE_ELÉCTRICO = gql`
-  query {
-    getEnergyBalanceByDateRange(
-      startDate: "2025-01-02T00:00:00Z"
-      endDate: "2025-01-03T00:00:00Z"
-    ) {
+  query getEnergyBalanceByDateRange($startDate: String!, $endDate: String!) {
+    getEnergyBalanceByDateRange(startDate: $startDate, endDate: $endDate) {
       startDate
       endDate
       data {

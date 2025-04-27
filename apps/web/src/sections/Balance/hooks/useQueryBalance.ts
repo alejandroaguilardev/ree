@@ -20,7 +20,7 @@ export const useGetEnergyBalanceByDateRange = ({
     );
 
     return {
-        data,
+        data: data?.getEnergyBalanceByDateRange,
         loading,
         error,
         refetch

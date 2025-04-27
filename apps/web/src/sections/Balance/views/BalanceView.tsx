@@ -1,4 +1,4 @@
-import { BalanceChart } from '../components/BalanceChart/BalanceChart';
+import { BalanceChartWrapper } from '../components/BalanceChart/BalanceChartWrapper';
 import { BalanceFormFilter } from '../components/Form/BalanceFormFilter';
 import { balanceDefaultValues } from '../components/Form/balance-validation';
 import { useGetEnergyBalanceByDateRange } from '../hooks/useQueryBalance';
@@ -10,10 +10,16 @@ export const BalanceView: React.FC = () => {
         endDate: balanceDefaultValues.endDate.toISOString(),
     });
 
+
     return (
         <>
             <BalanceFormFilter defaultValues={balanceDefaultValues} callback={(data: BalanceArgs) => refetch({ ...data })} />
-            <BalanceChart />
+            <BalanceChartWrapper
+                data={data}
+                isLoading={loading}
+                error={error}
+                refetch={refetch}
+            />
         </>
     )
 

@@ -10,5 +10,5 @@ export class EnvVars {
     DATABASE_MONGO_URL: string;
 
     @IsString()
-    EXTENAL_API_REE: string;
+    EXTERNAL_API_REE: string;
 }

@@ -12,7 +12,6 @@ export const BalanceView: React.FC = () => {
 
     return (
         <>
-            {JSON.stringify(data)}
             <BalanceFormFilter defaultValues={balanceDefaultValues} callback={(data: BalanceArgs) => refetch({ ...data })} />
             <BalanceChart />
         </>

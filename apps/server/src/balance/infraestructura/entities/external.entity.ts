@@ -1,163 +1,147 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 
 @ObjectType()
-class CacheControl {
-    @Field()
-    cache: string;
-}
-
-@ObjectType()
-class Meta {
-    @Field(() => CacheControl)
-    cacheControl: CacheControl;
-}
-
-@ObjectType()
-class Attributes {
-    @Field()
-    title: string;
-
-    @Field()
-    lastUpdate: string;
-
-    @Field()
-    description: string;
-}
-
-@ObjectType()
 class Value {
-    @Field()
-    value: number;
+    @Field(() => String)
+    value: string;
 
-    @Field()
-    percentage: number;
+    @Field(() => String)
+    percentage: string;
 
-    @Field()
+    @Field(() => String)
     datetime: string;
 }
 
 @ObjectType()
-export class RenewableContent {
-    @Field()
-    type: string;
+class CacheControl {
+    @Field(() => String, { nullable: true })
+    cache: string;
 
-    @Field()
-    id: string;
-
-    @Field()
-    groupId: string;
-
-    @Field(() => Attributes)
-    attributes: Attributes;
-
-    @Field()
-    total: number;
-
-    @Field()
-    totalPercentage: number;
+    @Field(() => String, { nullable: true })
+    expireAt: String;
 }
 
 @ObjectType()
-export class NonRenewableContent {
-    @Field()
-    type: string;
+class ContentAttributes {
+    @Field(() => String)
+    title: string;
 
-    @Field()
-    id: string;
+    @Field(() => String, { nullable: true })
+    description: string | null;
 
-    @Field()
-    groupId: string;
+    @Field(() => String)
+    color: string;
 
-    @Field(() => Attributes)
-    attributes: Attributes;
+    @Field(() => String, { nullable: true })
+    icon: string | null;
 
-    @Field()
-    total: number;
+    @Field(() => String, { nullable: true })
+    type: string | null;
 
-    @Field()
-    totalPercentage: number;
+    @Field(() => String, { nullable: true })
+    magnitude: string | null;
+
+    @Field(() => Boolean)
+    composite: boolean;
+
+
+    @Field(() => String, { nullable: true })
+    lastUpdate: String;
+
+    @Field(() => [Value])
+    values: Value[];
+
+    @Field(() => String)
+    total: String;
+
+    @Field(() => String, { nullable: true })
+    totalPercentage: String;
 }
 
 @ObjectType()
-export class StorageContent {
-    @Field()
+class Content {
+    @Field(() => String)
     type: string;
 
-    @Field()
+    @Field(() => String)
     id: string;
 
-    @Field()
+    @Field(() => String)
     groupId: string;
 
-    @Field(() => Attributes)
-    attributes: Attributes;
-
-    @Field()
-    total: number;
-
-    @Field()
-    totalPercentage: number;
+    @Field(() => ContentAttributes)
+    attributes: ContentAttributes;
 }
 
 @ObjectType()
-export class DemandContent {
-    @Field()
-    type: string;
+class IncludedAttributes {
+    @Field(() => String)
+    title: string;
 
-    @Field()
-    id: string;
+    @Field(() => String, { nullable: true })
+    lastUpdate: String;
 
-    @Field()
-    groupId: string;
+    @Field(() => String, { nullable: true })
+    description: string | null;
 
-    @Field(() => Attributes)
-    attributes: Attributes;
+    @Field(() => String, { nullable: true })
+    magnitude: string | null;
 
-    @Field()
-    total: number;
-
-    @Field()
-    totalPercentage: number;
+    @Field(() => [Content])
+    content: Content[];
 }
 
 @ObjectType()
-export class Included {
-    @Field()
-    type: 'Renovable' | 'No-Renovable' | 'Almacenamiento' | 'Demanda';
+class Included {
+    @Field(() => String)
+    type: string;
 
-    @Field()
+    @Field(() => String)
     id: string;
 
-    @Field(() => Attributes)
-    attributes: Attributes;
-
-    @Field(() => [RenewableContent], { nullable: true })
-    content: (RenewableContent | NonRenewableContent | StorageContent | DemandContent)[];
+    @Field(() => IncludedAttributes)
+    attributes: IncludedAttributes;
 }
 
+@ObjectType()
+class Meta {
+    @Field(() => CacheControl, { nullable: true })
+    cacheControl: CacheControl;
+}
+
+@ObjectType()
+class DataAttributes {
+    @Field(() => String)
+    title: string;
+
+    @Field(() => String, { nullable: true })
+    lastUpdate: String;
+
+    @Field(() => String)
+    description: string;
+}
 
 @ObjectType()
 class Data {
-    @Field()
+    @Field(() => String)
     type: string;
 
-    @Field()
+    @Field(() => String)
     id: string;
 
-    @Field(() => Attributes)
-    attributes: Attributes;
+    @Field(() => DataAttributes)
+    attributes: DataAttributes;
 
     @Field(() => Meta)
     meta: Meta;
 }
 
+
 @ObjectType()
 export class EnergyBalanceExternalEntity {
-    @Field(() => [Data])
+    @Field(() => Data)
     data: Data;
 
     @Field(() => [Included])
     included: Included[];
 }
-
-

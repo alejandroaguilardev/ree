@@ -1,5 +1,3 @@
-import React from "react";
-
 interface TypographyProps {
     variant?: "h1" | "h2" | "h3" | "body" | "caption" | "subheading";
     color?: string;

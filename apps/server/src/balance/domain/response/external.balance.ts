@@ -1,111 +1,74 @@
-export interface Value {
-    value: number;
-    percentage: number;
-    datetime: string;
+export interface EnergyBalanceExternal {
+    data: Data;
+    included: Included[];
 }
 
-export interface RenewableContent {
+export interface Data {
     type: string;
     id: string;
-    groupId: string;
-    attributes: {
-        title: string;
-        description: string | null;
-        color: string;
-        icon: string | null;
-        type: string;
-        magnitude: string | null;
-        composite: boolean;
-        lastUpdate: string;
-        values: Value[];
-        total: number;
-        totalPercentage: number;
-    };
+    attributes: DataAttributes;
+    meta: Meta;
 }
 
-export interface NonRenewableContent {
-    type: string;
-    id: string;
-    groupId: string;
-    attributes: {
-        title: string;
-        description: string | null;
-        color: string;
-        icon: string | null;
-        type: string;
-        magnitude: string | null;
-        composite: boolean;
-        lastUpdate: string;
-        values: Value[];
-        total: number;
-        totalPercentage: number;
-    };
+export interface DataAttributes {
+    title: string;
+    "last-update": Date;
+    description: string;
 }
 
-export interface StorageContent {
-    type: string;
-    id: string;
-    groupId: string;
-    attributes: {
-        title: string;
-        description: string | null;
-        color: string;
-        icon: string | null;
-        type: string;
-        magnitude: string | null;
-        composite: boolean;
-        lastUpdate: string;
-        values: Value[];
-        total: number;
-        totalPercentage: number;
-    };
+export interface Meta {
+    "cache-control": CacheControl;
 }
 
-export interface DemandContent {
-    type: string;
-    id: string;
-    groupId: string;
-    attributes: {
-        title: string;
-        description: string | null;
-        color: string;
-        icon: string | null;
-        type: string | null;
-        magnitude: string | null;
-        composite: boolean;
-        lastUpdate: string;
-        values: Value[];
-        total: number;
-        totalPercentage: number;
-    };
+export interface CacheControl {
+    cache: string;
+    expireAt: Date;
 }
 
 export interface Included {
-    type: 'Renovable' | 'No-Renovable' | 'Almacenamiento' | 'Demanda';
-    id: string;
-    attributes: {
-        title: string;
-        lastUpdate: string;
-        description: string | null;
-        magnitude: string | null;
-        content: (RenewableContent | NonRenewableContent | StorageContent | DemandContent)[];
-    };
+    type: string;
+    id: ID;
+    attributes: IncludedAttributes;
 }
 
-export interface EnergyBalanceExternal {
-    data: {
-        type: string;
-        id: string;
-        attributes: {
-            title: string;
-            lastUpdate: string;
-            description: string;
-        };
-        meta: {
-            cacheControl: {
-                cache: string;
-            };
-        };
-    };
-    included: Included[];
+export interface IncludedAttributes {
+    title: string;
+    "last-update": Date;
+    description: null | string;
+    magnitude: null;
+    content: Content[];
+}
+
+export interface Content {
+    type: string;
+    id: string;
+    groupId: ID;
+    attributes: ContentAttributes;
+}
+
+export interface ContentAttributes {
+    title: string;
+    description: null | string;
+    color: string;
+    icon: null;
+    type: null | string;
+    magnitude: null;
+    composite: boolean;
+    "last-update": Date;
+    values: Value[];
+    total: number;
+    "total-percentage": number;
+}
+
+export interface Value {
+    value: number;
+    percentage: number;
+    datetime: Date;
+}
+
+export enum ID {
+    Almacenamiento = "Almacenamiento",
+    DemandaEnBC = "Demanda en b.c.",
+    NoRenovable = "No-Renovable",
+    Renovable = "Renovable",
 }

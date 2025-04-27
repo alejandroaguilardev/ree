@@ -7,7 +7,7 @@ interface FormInputDateProps {
     value?: string;
 }
 
-export const RHFDate: React.FC<FormInputDateProps> = ({ name, label, value }) => {
+export const InputDate: React.FC<FormInputDateProps> = ({ name, label, value }) => {
     const { control } = useFormContext();
 
     return (

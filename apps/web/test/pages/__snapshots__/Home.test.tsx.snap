@@ -1,0 +1,90 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HomePage Snapshot > should match the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="flex justify-center items-center"
+    >
+      <div
+        class="max-w-[720px]mx - auto"
+      >
+        <div
+          class="block mb-4 mx-auto border-b border-slate-300 pb-2 max-w-[360px]"
+        >
+          <a
+            class="block w-full px-4 py-2 text-center text-slate-700 transition-all"
+            href="https://github.com/alejandroaguilardev/ree"
+            target="_blank"
+          >
+            visita el repositorio en 
+            <b>
+              alejandroaguilardev
+            </b>
+            .
+          </a>
+        </div>
+        <div
+          class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96"
+        >
+          <div
+            class="p-6"
+          >
+            <svg
+              class="w-10"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M13 2L3 14h8v8l10-12h-8v-8z"
+                fill-rule="evenodd"
+              />
+            </svg>
+            <h5
+              class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
+            >
+              Balance Eléctrico - REE
+            </h5>
+            <p
+              class="block font-sans text-base antialiased font-light leading-relaxed text-inherit"
+            >
+              Este proyecto tiene como objetivo obtener datos en tiempo real desde la API pública de REE (Red Eléctrica de España) sobre el Balance Eléctrico, incluyendo información sobre la generación, demanda, importaciones/exportaciones, y más.
+            </p>
+          </div>
+          <div
+            class="p-6 pt-0"
+          >
+            <a
+              class="inline-block"
+              href="/balance"
+            >
+              <button
+                class="flex items-center gap-2 px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20"
+                type="button"
+              >
+                Dashboard
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

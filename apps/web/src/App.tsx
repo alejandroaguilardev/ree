@@ -1,9 +1,10 @@
+import { ENVS } from "./config/envs"
 
 function App() {
 
   return (
     <>
-      <h1>Hola</h1>
+
     </>
   )
 }

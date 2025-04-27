@@ -12,3 +12,39 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: hackeable
+    networks:
+      - ree-network
+
+  server:
+    build:
+      context: ./apps/server
+      dockerfile: Dockerfile
+    container_name: ree-server
+    restart: always
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+    env_file:
+      - ./apps/server/.env
+    networks:
+      - ree-network
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: ree-web
+    restart: always
+    ports:
+      - '80:80'
+    depends_on:
+      - server
+    env_file:
+      - ./apps/web/.env
+    networks:
+      - ree-network
+
+networks:
+  ree-network:
+    driver: bridge

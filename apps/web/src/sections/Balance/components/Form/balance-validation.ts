@@ -8,7 +8,7 @@ export interface BalanceFormFilterInput {
 
 const today = new Date();
 const balanceDefaultValues: BalanceFormFilterInput = {
-    startDate: new Date(subtractToDate(today)),
+    startDate: new Date(subtractToDate(today, 7)),
     endDate: new Date(subtractToDate(today)),
 };
 

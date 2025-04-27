@@ -38,9 +38,9 @@ export const Button: React.FC<ButtonProps> = ({
 
     return (
         <button
-            className={classes}
             disabled={isLoading || disabled}
             {...props}
+            className={`${classes} ${props.className}`}
         >
             {isLoading && <span className="mr-2 h-4 w-4 animate-spin">🔄</span>}
             {!isLoading && leftIcon && <span className="mr-2">{leftIcon}</span>}

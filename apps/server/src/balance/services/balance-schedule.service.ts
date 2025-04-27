@@ -1,20 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { ExternalBalanceApi } from '../infraestructura/external-balance.api';
 import { MongoEnergyBalanceRepository } from '../infraestructura/repositories/mongo-energy-balance.repository';
 
 @Injectable()
 export class BalanceScheduleService {
+
     constructor(
         private readonly externalBalanceApi: ExternalBalanceApi,
         private readonly balanceRepository: MongoEnergyBalanceRepository,
     ) { }
 
-    @Cron('0 * * * *')
+    @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
     async fetchBalanceData() {
-        const startDate = '2025-04-25T00:00';
-        const endDate = '2025-04-25T23:59';
-        const records = await this.externalBalanceApi.getBalanceByDateRange(startDate, endDate);
-        await this.balanceRepository.upsert(records);
+        const endDate = new Date();
+        const startDate = new Date(endDate);
+        startDate.setDate(endDate.getDate() - 1);
+        return this.upsert(startDate, endDate);
+    }
+
+    private async upsert(startDate: Date, endDate: Date) {
+        const records = await this.externalBalanceApi.getBalanceByDateRange(
+            startDate.toISOString().slice(0, 16),
+            endDate.toISOString().slice(0, 16)
+        );
+        await this.balanceRepository.upsert(startDate, endDate, records);
     }
 }

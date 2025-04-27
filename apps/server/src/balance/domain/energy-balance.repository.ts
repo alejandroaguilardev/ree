@@ -1,5 +1,6 @@
 import { EnergyBalanceExternal } from "./response/external.balance";
 
 export interface EnergyBalanceRepository {
-    upsert(records: EnergyBalanceExternal): Promise<void>;
+    upsert(startDate: Date, endDate: Date, records: EnergyBalanceExternal): Promise<void>;
+    findByStartAndEndDate<T>(startDate: Date, endDate: Date, records: EnergyBalanceExternal): Promise<T>;
 }

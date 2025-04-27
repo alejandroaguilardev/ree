@@ -5,8 +5,9 @@ import { ExternalBalanceApi } from './infraestructura/external-balance.api';
 import { MongoEnergyBalanceRepository } from './infraestructura/repositories/mongo-energy-balance.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EnergyBalanceModel, EnergyBalanceSchema } from './infraestructura/schema/energy-balance.schema';
-import { HttpModule, HttpService } from '@nestjs/axios';
+import { HttpModule } from '@nestjs/axios';
 import { ScheduleModule } from '@nestjs/schedule';
+import { BalanceScheduleService } from './services/balance-schedule.service';
 
 @Module({
   imports: [
@@ -14,6 +15,6 @@ import { ScheduleModule } from '@nestjs/schedule';
     ScheduleModule.forRoot(),
     MongooseModule.forFeature([{ name: EnergyBalanceModel.name, schema: EnergyBalanceSchema }]),
   ],
-  providers: [BalanceResolver, BalanceService, ExternalBalanceApi, MongoEnergyBalanceRepository],
+  providers: [BalanceResolver, BalanceService, ExternalBalanceApi, MongoEnergyBalanceRepository, BalanceScheduleService],
 })
 export class BalanceModule { }

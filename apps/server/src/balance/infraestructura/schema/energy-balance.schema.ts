@@ -92,10 +92,9 @@ export class Demand {
 }
 
 
-export type EnergyBalanceDocument = EnergyBalanceModel & Document;
 
 @Schema()
-export class EnergyBalanceModel {
+export class EnergyBalanceApi {
     @Prop({ required: true })
     title: string;
 
@@ -116,6 +115,23 @@ export class EnergyBalanceModel {
 
     @Prop({ type: [Demand] })
     demand: Demand[];
+}
+
+export type EnergyBalanceDocument = EnergyBalanceModel & Document;
+
+@Schema()
+export class EnergyBalanceModel {
+    @Prop()
+    startDate: Date;
+
+    @Prop()
+    endDate: Date;
+
+    @Prop()
+    lastUpdate: Date;
+
+    @Prop()
+    data: EnergyBalanceApi;
 }
 
 export const EnergyBalanceSchema = SchemaFactory.createForClass(EnergyBalanceModel);

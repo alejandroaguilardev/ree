@@ -8,7 +8,7 @@ import { firstValueFrom } from "rxjs";
 @Injectable()
 export class ExternalBalanceApi {
     private readonly logger = new Logger(ExternalBalanceApi.name);
-    private readonly apiUrl = process.env.EXTENAL_API_REE;
+    private readonly apiUrl = process.env.EXTERNAL_API_REE;
 
     constructor(
         private readonly httpService: HttpService,

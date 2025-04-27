@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BalanceResolver } from '../../src/balance/balance.resolver';
-import { BalanceService } from '../../src/balance/balance.service';
+import { BalanceService } from '../../src/balance/services/balance.service';
 
 describe('BalanceResolver', () => {
   let resolver: BalanceResolver;

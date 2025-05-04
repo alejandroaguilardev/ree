@@ -28,4 +28,4 @@ import { GlobalExceptionFilter } from './config/global-error';
     },
   ],
 })
-export class AppModule { }
+export class AppModule {}

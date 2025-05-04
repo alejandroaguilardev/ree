@@ -3,11 +3,11 @@ import { Transform } from 'class-transformer';
 
 @ArgsType()
 export class GetBalanceDto {
-    @Field(() => String)
-    @Transform(({ value }) => new Date(value))
-    startDate: Date;
+  @Field(() => String)
+  @Transform(({ value }: { value: string }) => new Date(value))
+  startDate: Date;
 
-    @Field(() => String)
-    @Transform(({ value }) => new Date(value))
-    endDate: Date;
+  @Field(() => String)
+  @Transform(({ value }: { value: string }) => new Date(value))
+  endDate: Date;
 }

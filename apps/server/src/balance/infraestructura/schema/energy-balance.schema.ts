@@ -7,17 +7,18 @@ export type EnergyBalanceDocument = EnergyBalanceModel & Document;
 
 @Schema()
 export class EnergyBalanceModel {
-    @Prop()
-    startDate: Date;
+  @Prop()
+  startDate: Date;
 
-    @Prop()
-    endDate: Date;
+  @Prop()
+  endDate: Date;
 
-    @Prop()
-    lastUpdate: Date;
+  @Prop()
+  lastUpdate: Date;
 
-    @Prop({ type: EnergyBalanceExternalEntity, required: true })
-    data: EnergyBalanceExternal;
+  @Prop({ type: EnergyBalanceExternalEntity, required: true })
+  data: EnergyBalanceExternal;
 }
 
-export const EnergyBalanceSchema = SchemaFactory.createForClass(EnergyBalanceModel);
+export const EnergyBalanceSchema =
+  SchemaFactory.createForClass(EnergyBalanceModel);

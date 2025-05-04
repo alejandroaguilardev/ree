@@ -4,7 +4,10 @@ import { BalanceResolver } from './balance.resolver';
 import { ExternalBalanceApi } from './infraestructura/external-balance.api';
 import { MongoEnergyBalanceRepository } from './infraestructura/repositories/mongo-energy-balance.repository';
 import { MongooseModule } from '@nestjs/mongoose';
-import { EnergyBalanceModel, EnergyBalanceSchema } from './infraestructura/schema/energy-balance.schema';
+import {
+  EnergyBalanceModel,
+  EnergyBalanceSchema,
+} from './infraestructura/schema/energy-balance.schema';
 import { HttpModule } from '@nestjs/axios';
 import { ScheduleModule } from '@nestjs/schedule';
 import { BalanceScheduleService } from './services/balance-schedule.service';
@@ -16,7 +19,9 @@ import { APP_PIPE } from '@nestjs/core';
   imports: [
     HttpModule,
     ScheduleModule.forRoot(),
-    MongooseModule.forFeature([{ name: EnergyBalanceModel.name, schema: EnergyBalanceSchema }]),
+    MongooseModule.forFeature([
+      { name: EnergyBalanceModel.name, schema: EnergyBalanceSchema },
+    ]),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
@@ -34,4 +39,4 @@ import { APP_PIPE } from '@nestjs/core';
     },
   ],
 })
-export class BalanceModule { }
+export class BalanceModule {}

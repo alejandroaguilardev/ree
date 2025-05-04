@@ -4,15 +4,15 @@ import { EnergyBalanceExternalEntity } from './external.entity';
 
 @ObjectType()
 export class Balance {
-    @Field(() => Date)
-    startDate: Date;
+  @Field(() => Date)
+  startDate: Date;
 
-    @Field(() => Date)
-    endDate: Date;
+  @Field(() => Date)
+  endDate: Date;
 
-    @Field(() => Date)
-    lastUpdate: Date;
+  @Field(() => Date)
+  lastUpdate: Date;
 
-    @Field(() => EnergyBalanceExternalEntity)
-    data: EnergyBalanceExternal;
+  @Field(() => EnergyBalanceExternalEntity)
+  data: EnergyBalanceExternal;
 }

@@ -2,10 +2,16 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { BalanceService } from '../../../src/balance/services/balance.service';
 import { MongoEnergyBalanceRepository } from '../../../src/balance/infraestructura/repositories/mongo-energy-balance.repository';
 import { ExternalBalanceMother } from '../domain/external-balance.mother';
+import { EnergyBalanceRepository } from '../../../src/balance/domain/energy-balance.repository';
+import { ExternalBalanceApi } from '../../../src/balance/infraestructura/external-balance.api';
+
+const externalBalanceApiMock = {
+    getBalanceByDateRange: jest.fn(),
+};
 
 describe('BalanceService', () => {
     let service: BalanceService;
-    let repositoryMock: Partial<MongoEnergyBalanceRepository>;
+    let repositoryMock: Partial<EnergyBalanceRepository>;
 
     beforeEach(async () => {
         repositoryMock = {
@@ -15,7 +21,13 @@ describe('BalanceService', () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [
                 BalanceService,
-                { provide: MongoEnergyBalanceRepository, useValue: repositoryMock },
+                {
+                    provide: MongoEnergyBalanceRepository, useValue: repositoryMock,
+
+                },
+                {
+                    provide: ExternalBalanceApi, useValue: externalBalanceApiMock
+                }
             ],
         }).compile();
 

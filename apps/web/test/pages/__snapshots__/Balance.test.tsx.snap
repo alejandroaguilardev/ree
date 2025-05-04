@@ -37,7 +37,7 @@ exports[`BalancePage Snapshot > should match the snapshot 1`] = `
               id="startDate"
               name="startDate"
               type="date"
-              value="2025-04-26"
+              value="2025-05-04"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ exports[`BalancePage Snapshot > should match the snapshot 1`] = `
               id="endDate"
               name="endDate"
               type="date"
-              value="2025-04-26"
+              value="2025-05-04"
             />
           </div>
         </div>
